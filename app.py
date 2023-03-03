@@ -8,4 +8,4 @@ def index():
     return jsonify({'name': 'alice',
                     'email': 'alice@outlook.com'})
 
-app.run()
+app.run(port="8000")
