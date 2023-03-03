@@ -3,13 +3,14 @@
 import json
 from flask import Flask, jsonify
 app = Flask(__name__)
-@app.route('/')
+@app.route('/<hashpart>')
 
-def index():
+def index(hashpart):
     f = open('data.json')
     data = json.load(f)
     ret = []
     for i in data['theData']:
-        ret.append(i)
+        if i['hash'].startswith(hashpart):
+            ret.append(i)
     f.close()
     return jsonify(ret)
